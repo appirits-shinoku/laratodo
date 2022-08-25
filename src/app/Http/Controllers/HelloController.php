@@ -10,4 +10,8 @@ class HelloController extends Controller
     {
         return view('hello');
     }
+    public function login ()
+    {
+        return view('login');
+    }
 }

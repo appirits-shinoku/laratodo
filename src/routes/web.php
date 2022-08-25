@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HelloController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,4 +15,10 @@ use App\Http\Controllers\HelloController;
 |
 */
 
-Route::get('/', [HelloController::class, 'index']);
+Route::get('/login', [HelloController::class, 'login'])->name('front.index');
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', [HelloController::class, 'index']);
+    Route::get('/logout', [AuthController::class, 'logout']);
+});

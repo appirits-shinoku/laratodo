@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Seeder;
+use App\Models\User;
 
 class FrontAuthUser extends Seeder
 {
@@ -16,7 +17,7 @@ class FrontAuthUser extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+        User::updateOrCreate([
             'name' => 'テストユーザ',
             'email' => 'hoge@hoge',
             'email_verified_at' => date('Y-m-d H:i:s'),
